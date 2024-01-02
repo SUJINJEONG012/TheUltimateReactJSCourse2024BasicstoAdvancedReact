@@ -1,19 +1,28 @@
-import React from "react"; // eslint-disable-line no-unused-vars
+import React, {useState} from "react"; // eslint-disable-line no-unused-vars
 
 const CreateTodo = ()=>{
-    const tasks = 1;
-    const countTasks = ()=>{
-        if(tasks === 0){
-            return "No tasks avilable"
-        }else{
-            return `Tasks : ${tasks}`;        
-        }
-    };
 
+    const [count, setCount] = useState(0);
+    const [input, setInput] = useState("");   
+
+    const handleClick = () =>{
+        setCount(count +1);
+        
+    };
+    const handleChange = (e)=>{
+        setInput(e.target.value);
+    };
+    
     return (
         <>
-        <h1>Tasks : {countTasks()} </h1>
-        <button>Add Task</button>
+       
+        <h1>Tasks : {count} </h1>
+       <input type="text" onChange={handleChange}/>
+        <button 
+            onClick={handleClick}
+            value="Add Task Button">
+            Add Task</button>
+            <h1>Input : {input}</h1>
         </>
     )
 }
